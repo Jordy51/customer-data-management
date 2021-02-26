@@ -28,4 +28,4 @@ app.set("view engine", "ejs");
 
 app.use("/", require("./routes/customerRoute"));
 
-app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is up and running on port http://localhost:${PORT}`));

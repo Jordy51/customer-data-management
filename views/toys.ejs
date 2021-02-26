@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Toys Account Add</title>
+		<link rel="stylesheet" type="text/css" href="./css/toys.css" />
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<div class="container">
+			<form action="/toys/createCustomer" method="POST">
+				<div class="heading">Create User Account</div>
+				<input type="email" required="required" autocomplete="off" name="email" class="inp" placeholder="Enter Email" />
+				<input type="text" required="required" autocomplete="off" name="name" class="inp" placeholder="Enter Name" />
+				<input type="text" required="required" autocomplete="off" name="address" class="inp" placeholder="Enter Address" />
+				<input type="tel" required="required" autocomplete="off" name="phoneNumber" class="inp" placeholder="Enter Ph. No" pattern="[0-9]{10}" />
+				<input type="date" required="required" autocomplete="off" name="dob" class="inp" placeholder="Enter Date-of-Birth" />
+				<div id="custom-fields">Add Custom Fields &nbsp; - <span class="adder">+</span></div>
+				<div id="cf-fields-add"></div>
+				<input class="btn" type="Submit" value="Submit" />
+			</form>
+		</div>
+
+		<script type="text/javascript" src="./toys.js"></script>
+	</body>
+</html>

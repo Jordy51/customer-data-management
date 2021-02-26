@@ -9,6 +9,9 @@ const CustomerSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.String,
 		required: true,
 	},
+	address: {
+		type: mongoose.Schema.Types.String,
+	},
 	phoneNumber: {
 		type: mongoose.Schema.Types.Number,
 	},
