@@ -12,11 +12,11 @@ adderButton.addEventListener("click", (event) => {
   input1.setAttribute("required", "required")
   input1.setAttribute("placeholder", "Enter Field name");
 
-  let input2 = document.createElement("input");
-  input2.setAttribute("name", "" + counter + "-data")
-  input2.setAttribute("type", "text")
-  input2.setAttribute("required", "required")
-  input2.setAttribute("placeholder", "Enter Value");
+//   let input2 = document.createElement("input");
+//   input2.setAttribute("name", "" + counter + "-data")
+//   input2.setAttribute("type", "text")
+//   input2.setAttribute("required", "required")
+//   input2.setAttribute("placeholder", "Enter Value");
 
   let selectorField = selectElemGen(counter);
 
@@ -30,7 +30,7 @@ adderButton.addEventListener("click", (event) => {
   })
 
   span.appendChild(input1);
-  span.appendChild(input2);
+//   span.appendChild(input2);
   span.appendChild(selectorField);
   span.appendChild(deleterSpan);
 
@@ -45,7 +45,7 @@ function selectElemGen(selectName)
 	let span = document.createElement("span");
 
 	let select = document.createElement("select");
-	select.setAttribute("name", "" + selectName + "-select");
+	select.setAttribute("name", "" + selectName + "-TYPE");
 	select.setAttribute("class", "select");
 
 	select.addEventListener("change" , (event) => {

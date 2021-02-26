@@ -15,7 +15,7 @@ const CustomerSchema = new mongoose.Schema({
 	phoneNumber: {
 		type: mongoose.Schema.Types.Number,
 	},
-	DOB: {
+	dob: {
 		type: mongoose.Schema.Types.Date,
 	},
 });

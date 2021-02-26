@@ -12,24 +12,31 @@ router.get("/toys", (req, res) => {
 
 router.get("/electronics", (req, res) => {});
 
-router.post("/toys/createCustomer", (req, res) => {
+
+router.post("/createCustomer", (req, res) => {
 	const { email, name, address, phoneNumber, dob } = req.body;
+
+	console.log(req.body)
 
 	const newCustomer = new Customer({
 		email,
 		name,
-		address,
 		phoneNumber,
-		dob,
+		address,
+		dob: Date(dob),
 	});
 
 	newCustomer
 		.save()
 		.then((customer) => {
-			console.log(newCustomer);
 			res.send("New Customer created" + newCustomer);
 		})
 		.catch((err) => console.log(err));
 });
+
+router.delete("/deleteCustomer", async (req, res) => {
+	const customer = await Customer.findOneAndDelete({ email: req.body.email })
+	res.send(customer)
+})
 
 module.exports = router;
