@@ -7,7 +7,12 @@
 	</head>
 	<body>
 		<div class="container">
-			<form action="/toys/createNewField" method="POST">
+			<form action="/fields/createFields" method="POST">
+				<label for="store">Choose a Store:</label>
+				<select name="store" id="store">
+					<option value="ToyStore">Toy Store</option>
+					<option value="ElectronicsStore">Electronics Store</option>
+				</select>
 				<!-- <div class="heading">Create User Account</div> -->
 				<!-- <input type="email" required="required" autocomplete="on" name="email" class="inp" placeholder="Enter Email" />
 				<input type="text" required="required" autocomplete="on" name="name" class="inp" placeholder="Enter Name" />

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CustomerSchema = new mongoose.Schema({
+const Customer = new mongoose.Schema({
 	email: {
 		type: mongoose.Schema.Types.String,
 		required: true,
@@ -20,6 +20,9 @@ const CustomerSchema = new mongoose.Schema({
 	},
 });
 
-const Customer = mongoose.model("Customer", CustomerSchema);
+mongoose.model("Customer", Customer);
 
-module.exports = Customer;
+const ToyStoreCustomer = mongoose.model("ToyStoreCustomer", mongoose.Schema(Customer));
+const ElectronicsStoreCustomer = mongoose.model("ElectronicsStoreCustomer", mongoose.Schema(Customer));
+
+module.exports = { ToyStoreCustomer, ElectronicsStoreCustomer };

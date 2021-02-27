@@ -25,9 +25,8 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 
-app.use("/", require("./routes/customerRoute"));
-app.use("/toys", require("./routes/toyStoreFieldsRoute"))
-app.use("/electronics", require("./routes/electronicsStoreFieldsRoute"))
-
+// Routes
+app.use("/fields", require("./routes/fieldsRoute"));
+app.use("/customers", require("./routes/customerRoute"));
 
 app.listen(PORT, () => console.log(`Server is up and running on port http://localhost:${PORT}`));
