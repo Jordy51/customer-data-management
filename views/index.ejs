@@ -8,9 +8,13 @@
 		<div class="container-top">
 			<div class="heading"><h2>Choose account type:</h2></div>
 			<div class="container">
-				<div class="toy btn" href="/toys.ejs"><button >Toys</button></div>
-				<div class="elec btn"><button>Electronic</button></div>
+				<form action="/customers/createCustomer" method="GET">
+					<input type="submit" value="Create Customer" />
+				</form>
+				<form action="/fields/createFields" method="GET">
+					<input type="submit" value="Create Custom Fields" />
+				</form>
 			</div>
 		</div>
-	</body>  
+	</body>
 </html>

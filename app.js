@@ -26,6 +26,7 @@ app.use(express.static(__dirname + "/views"));
 app.set("view engine", "ejs");
 
 // Routes
+app.use("/", require("./routes/index"));
 app.use("/fields", require("./routes/fieldsRoute"));
 app.use("/customers", require("./routes/customerRoute"));
 
