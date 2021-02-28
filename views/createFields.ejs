@@ -10,10 +10,6 @@
 			<div class="heading">Create Custom Fields</div>
 			<label class="sub-head">Choose a Store</label>
 			<div class="selector" id="selector">
-				<!-- <select class="store-name" name="store" id="store">
-					<option value="ToyStore">Toy Store</option>
-					<option value="ElectronicsStore">Electronics Store</option>
-				</select> -->
 			</div>
 			<div id="toy-fields">
 				<% toyFields.forEach((field) => { %>
@@ -21,7 +17,7 @@
 					<span> <%= field.fieldName %> </span>
 					<span> <%= field.fieldType %> </span>
 					<div class="btn-group">
-						<button class="update-btn">Update</button>
+						<a href="/fields/updateField/toys/<%= field.fieldName %>">	<button class="update-btn">Update</button></a>
 						<a href="/fields/deleteField/toys/<%= field.fieldName %>"><button class="delete-btn">Delete</button></a>
 					</div>
 				</div>
@@ -33,7 +29,7 @@
 					<span> <%= field.fieldName %> </span>
 					<span> <%= field.fieldType %> </span>
 					<div class="btn-group">
-						<button class="update-btn">Update</button>
+						<a href="/fields/updateField/electronics/<%= field.fieldName %>">	<button class="update-btn">Update</button></a>
 						<a href="/fields/deleteField/electronics/<%= field.fieldName %>"><button class="delete-btn">Delete</button></a>
 					</div>
 				</div>

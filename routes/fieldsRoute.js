@@ -30,7 +30,7 @@ const createFields = async (Field, body) => {
 };
 
 const deleteField = async (Field, fieldName) => {
-	return await Field.findOneAndDelete({ "fieldName": fieldName });
+	return await Field.findOneAndDelete({ fieldName: fieldName });
 };
 
 // /fields/createFields
@@ -50,7 +50,23 @@ router.post("/createFields", async (req, res) => {
 });
 
 // /fields/updateFields
-router.get("/updateFields", (req, res) => {
+router.get("/updateField/:storeType/:fieldName", async (req, res) => {
+	let field;
+	if (req.params.storeType == "toys") {
+		field = await ToyStoreCustomField.findOne({ fieldName: req.params.fieldName });
+	} else if (req.params.storeType == "electronics") {
+		field = await ElectronicsStoreCustomField.findOne({ fieldName: req.params.fieldName });
+	}
+	res.render("updateField", { field: field, storeType: req.params.storeType });
+});
+
+router.post("/updateField/:storeType/", async (req, res) => {
+	let field;
+	if (req.params.storeType == "toys") {
+		field = await ToyStoreCustomField.findOneAndUpdate({ fieldName: req.body.fieldName });
+	} else if (req.params.storeType == "electronics") {
+		field = await ElectronicsStoreCustomField.findOneAndUpdate({ fieldName: req.body.fieldName });
+	}
 	res.redirect("/fields/createFields");
 });
 

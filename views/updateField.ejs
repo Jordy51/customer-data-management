@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Custom Fields Update</title>
-	<link rel="stylesheet" type="text/css" href="./fieldsUpdate.css">
-	<meta charset="utf-8">
-</head>
-<body>
-	<div class="container">
-		<form  action="/customers/createCustomer" method="POST">
-			<div class="heading">Update Custom Field</div>
-			<div class="custom-fields">
-				<input class="inp" type="text" name="religion" value="Religion" />
-				<select name="religion-type" class="select">
-					<option value="text">Text</option>
-					<option value="number">Number</option>
-					<option value="email">Email</option>
-					<option value="date">Date</option>
-				</select>
-			</div>
+	<head>
+		<title>Custom Fields Update</title>
+		<link rel="stylesheet" type="text/css" href="/css/updateField.css" />
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<div class="container">
+			<form action="/fields/updateField/<%= storeType %>/" method="POST">
+				<div class="heading">Update Custom Field</div>
+				<div class="custom-fields">
+					<input class="inp" type="text" name="fieldName" value="<%= field.fieldName %>" />
+					<input class="inp" type="text" name="fieldType" value="<%= field.fieldType %>" />
+				</div>
 
-			<input class="btn" type="Submit" value="Update" />
-		</form>
-	</div>
-	<script type="text/javascript" src="./fieldsUpdate.js"></script>
-</body>
+				<input class="btn" type="Submit" value="Update" />
+			</form>
+		</div>
+		<script type="text/javascript" src="/updateField.js"></script>
+	</body>
 </html>
