@@ -38,8 +38,10 @@ router.get("/", async (req, res) => {
 	res.render("customersView", { customers: customers });
 });
 
-// /customer/customerDetails
-router.get("/details", (req, res) => {
+// /customer/details
+router.get("/details/:type/:id", (req, res) => {
+	console.log(req.params);
+
 	res.render("customerDetails");
 });
 
@@ -56,6 +58,7 @@ router.get("/createCustomer", async (req, res) => {
 });
 
 router.post("/createCustomer", async (req, res) => {
+	console.log(req.body);
 	const { store } = req.body;
 	let newCustomer;
 	if (store === "ToyStore") {

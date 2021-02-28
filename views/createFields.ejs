@@ -7,16 +7,41 @@
 	</head>
 	<body>
 		<div class="container">
-			<form action="/fields/createFields" method="POST">
-				<div class="heading">Create Custom Fields</div>
-				<label class="sub-head">Choose a Store</label>
-				<div class="selector">
-					<select class="store-name" name="store" id="store">
-						<option value="ToyStore">Toy Store</option>
-						<option value="ElectronicsStore">Electronics Store</option>
-					</select>
+			<div class="heading">Create Custom Fields</div>
+			<label class="sub-head">Choose a Store</label>
+			<div class="selector" id="selector">
+				<select class="store-name" name="store" id="store">
+					<option value="ToyStore">Toy Store</option>
+					<option value="ElectronicsStore">Electronics Store</option>
+				</select>
+			</div>
+			<div id="toy-fields">
+				<% toyFields.forEach((field) => { %>
+				<div class="fields">
+					<span> <%= field.fieldName %> </span>
+					<span> <%= field.fieldType %> </span>
+					<div class="btn-group">
+						<button class="update-btn">Update</button>
+						<button class="delete-btn">Delete</button>
+					</div>
 				</div>
-				<label class="sub-head">Add Custom Fields &nbsp;&nbsp;<button class="add-btn">+</button></label>
+				<% }) %>
+			</div>
+			<div id="electronic-fields">
+				<% electronicsFields.forEach((field) => { %>
+				<div class="fields">
+					<span> <%= field.fieldName %> </span>
+					<span> <%= field.fieldType %> </span>
+					<div class="btn-group">
+						<button class="update-btn">Update</button>
+						<button class="delete-btn">Delete</button>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+			<form action="/fields/createFields" method="POST">
+				<div class="add-btn-cont"><label class="sub-head">Add Custom Fields &nbsp;&nbsp;</label><button class="add-btn">+</button></div>
+
 				<div id="custom-fields-add"></div>
 				<input class="btn" type="Submit" value="Submit" />
 			</form>

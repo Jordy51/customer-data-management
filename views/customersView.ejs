@@ -1,42 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>
-		Toys Users
-	</title>
-	<link rel="stylesheet" type="text/css" href="/css/customersView.css">
-</head>
-<body>
-	<div class="container">
-	  <div class="container">
-	  <div class="heading">
-	    User Details (Toys) 
-	  </div>
-	  <% customers.forEach((customer) => { %>
-		<div class="card">
-			<div class="delete-btn">X</div>
-			  <div class="user-name">
-				<%= customer.name %>
-			  </div>
-			  <div class="email">
-				<%= customer.email %>
-			  </div>
-			  <div class="other-details">
-				<div class="dob">
-					<%= customer.dob %>
-				</div>
-				<div class="phoneNumber">
-					<%= customer.phoneNumber %>
-				</div>
-				<div class="address">
-					<%= customer.address %>
-				</div>
-			  </div>
+	<head>
+		<title>Toys Users</title>
+		<link rel="stylesheet" type="text/css" href="/css/customersView.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="container">
+				<div class="heading">User Details (Toys)</div>
+				<% customers.forEach((customer) => { %>
+				<a href="/customer/details/STORE/<%= customer._id %>">
+					<div class="card">
+						<div class="user-name"><%= customer.name %></div>
+						<div class="email"><%= customer.email %></div>
+						<div class="other-details">
+							<div class="dob"><%= customer.dob %></div>
+							<div class="phoneNumber"><%= customer.phoneNumber %></div>
+							<div class="address"><%= customer.address %></div>
+						</div>
+					</div>
+				</a>
+				<% }) %>
 			</div>
-	  <% }) %>
+		</div>
 
-	<a href="/customers/createCustomer"> <button> CreateNewCustomer</button></a>
-	  <!-- <div class="card">
+		<a href="/customers/createCustomer"><button class="create-customer-btn"> CreateNewCustomer</button></a>
+		<!-- <div class="card">
       <div class="delete-btn">X</div>
 	    <div class="user-name">
 	       Garvit Jain
@@ -56,6 +45,5 @@
 	      </div>
 	    </div>
 	  </div> -->
-	</div>
-</body>
+	</body>
 </html>

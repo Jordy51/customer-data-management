@@ -24,11 +24,19 @@
 					<input type="text" required="required" autocomplete="on" name="address" class="inp" placeholder="Enter Address" />
 					<input type="date" required="required" autocomplete="on" name="dob" class="inp" placeholder="Enter Date-of-Birth" />
 				</div>
-				<div class="custom-fields">
-					<div class="sub-head">Custom Fields</div>
-					<% toyFields.forEach((field) => { %>
-					<input type="<%= field.fieldType %>" autocomplete="on" name="<%= field.fieldName %>" class="inp" placeholder="<%= field.fieldName %>" />
-					<% }) %>
+				<div class="custom-fields" id="toys">
+					<div class="toys-fields">
+						<div class="sub-head">Toys Fields</div>
+						<% toyFields.forEach((field) => { %>
+						<input type="<%= field.fieldType %>" autocomplete="on" name="<%= field.fieldName %>" class="inp" placeholder="<%= field.fieldName %>" />
+						<% }) %>
+					</div>
+					<div class="electronics-fields">
+						<div class="sub-head">Electronics Fields</div>
+						<% electronicsFields.forEach((field) => { %>
+						<input type="<%= field.fieldType %>" autocomplete="on" name="<%= field.fieldName %>" class="inp" placeholder="<%= field.fieldName %>" />
+						<% }) %>
+					</div>
 				</div>
 				<input class="btn" type="Submit" value="Submit" />
 			</form>

@@ -34,8 +34,10 @@ const deleteField = async (Field) => {
 };
 
 // /fields/createFields
-router.get("/createFields", (req, res) => {
-	res.render("createFields");
+router.get("/createFields", async (req, res) => {
+	const toyFields = await ToyStoreCustomField.find({});
+	const electronicsFields = await ElectronicsStoreCustomField.find({});
+	res.render("createFields", { toyFields: toyFields, electronicsFields: electronicsFields });
 });
 
 router.post("/createFields", (req, res) => {
@@ -49,9 +51,6 @@ router.post("/createFields", (req, res) => {
 
 // /fields/updateFields
 router.get("/updateFields", (req, res) => {
-
-	
-
 	res.redirect("createFields");
 });
 
