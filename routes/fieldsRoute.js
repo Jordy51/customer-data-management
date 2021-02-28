@@ -3,13 +3,18 @@ const router = require("express").Router();
 const { ToyStoreCustomField, ElectronicsStoreCustomField } = require("../models/CustomField");
 
 const createFields = async (Field, body) => {
+	const defaultFields = ["email", "name", "address", "phoneNumber", "dob", "store"];
+
 	delete body.store;
 	const values = Object.values(body);
-	console.log(values);
 	const x = values.length / 2;
 
+	if ((await Field.countDocuments({})) + (defaultFields.length - 1) === 20) {
+		res.send("No more fields allowed!");
+	}
+
 	for (let i = 0; i < x; i++) {
-		if (await Field.findOne({ fieldName: values[i] })) {
+		if ((await Field.findOne({ fieldName: values[i] })) || defaultFields.indexOf(values[i]) != -1) {
 			return -1;
 		} else {
 			let newField = new Field({
@@ -24,13 +29,16 @@ const createFields = async (Field, body) => {
 	}
 };
 
+const deleteField = async (Field) => {
+	return await Field.findOneAndDelete({});
+};
+
+// /fields/createFields
 router.get("/createFields", (req, res) => {
 	res.render("createFields");
 });
 
-router.post("/createFields", async (req, res) => {
-	const defaultFields = ["email", "name", "address", "phoneNumber", "dob", "store"];
-
+router.post("/createFields", (req, res) => {
 	if (req.body.store === "ToyStore") {
 		createFields(ToyStoreCustomField, req.body);
 	} else if (req.body.store === "ElectronicsStore") {
@@ -39,10 +47,25 @@ router.post("/createFields", async (req, res) => {
 	res.redirect("createFields");
 });
 
-router.delete("/deleteField", async (req, res) => {
-	const field = await ToyStoreCustomField.findOneAndDelete({ fieldName: req.body.fieldName });
-	console.log("Deleted! ", field);
-	res.redirect("toyStoreFields");
+// /fields/updateFields
+router.get("/updateFields", (req, res) => {
+
+	
+
+	res.redirect("createFields");
+});
+
+// /fields/deleteFields
+router.delete("/deleteField", (req, res) => {
+	let deletedField;
+
+	if (res.body.store == "ToyStore") {
+		deletedField = deleteField(ToyStoreCustomField, req.body);
+	} else if (req.body.store === "ElectronicsStore") {
+		deletedField = deleteField(ElectronicsStoreCustomField, req.body);
+	}
+	console.log("Deleted!", deletedField);
+	res.redirect("createFields");
 });
 
 module.exports = router;

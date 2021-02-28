@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Toys Account Add</title>
-		<link rel="stylesheet" type="text/css" href="/css/create.css" />
-		<meta charset="UTF-8" />
+		<title>Custom Fields Add</title>
+		<link rel="stylesheet" type="text/css" href="/css/createFields.css" />
+		<meta charset="utf-8" />
 	</head>
 	<body>
 		<div class="container">
 			<form action="/fields/createFields" method="POST">
-				<label for="store">Choose a Store:</label>
-				<select name="store" id="store">
-					<option value="ToyStore">Toy Store</option>
-					<option value="ElectronicsStore">Electronics Store</option>
-				</select>
-				<div id="custom-fields">Add Custom Fields &nbsp; - <span class="adder">+</span></div>
-				<div id="cf-fields-add"></div>
-				<input class="btn" type="Submit" value="Save" />
+				<div class="heading">Create Custom Fields</div>
+				<label class="sub-head">Choose a Store</label>
+				<div class="selector">
+					<select class="store-name" name="store" id="store">
+						<option value="ToyStore">Toy Store</option>
+						<option value="ElectronicsStore">Electronics Store</option>
+					</select>
+				</div>
+				<label class="sub-head">Add Custom Fields &nbsp;&nbsp;<button class="add-btn">+</button></label>
+				<div id="custom-fields-add"></div>
+				<input class="btn" type="Submit" value="Submit" />
 			</form>
 		</div>
-
-		<script type="text/javascript" src="/toys.js"></script>
+		<script type="text/javascript" src="/scripts/createFields.js"></script>
 	</body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Toys Users
+	</title>
+	<link rel="stylesheet" type="text/css" href="/css/toysIndex.css">
+</head>
+<body>
+	<div class="container">
+		<% customers.forEach((customer) => { %>
+			<div class="container">
+				<div class="heading">
+				</div>
+				<div class="card">
+				<div class="delete-btn">Delete</div>
+				  <div class="user-name">
+					<%= customer.name %>
+				</div>
+				  <div class="email">
+					<%= customer.email %>
+				</div>
+				  <div class="other-details">
+					<div class="dob">
+						<%= customer.dob %>
+					</div>
+					<div class="phno">
+						<%= customer.phoneNumber %>
+					</div>
+					<div class="address">
+						<%= customer.address %>
+					</div>
+				  </div>
+				</div>
+			  </div>
+		<% }) %>
+</body>
+</html>

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+*{
+  box-sizing : border-box;
+}
+body,html{
+  margin: 0;
+  padding: 0;
+}
+body{
+  height: 100vh;
+}
+
+.container{
+  padding: 50px;
+  padding-top: 10px;
+}
+
+
+.heading{
+  color: rgb(20,20,20);
+  font-family: 'RocknRoll One', sans-serif;
+  font-weight: 900;
+  font-size: 2.5em;
+  text-align : center;
+  margin-bottom: 30px;
+  letter-spacing: 4px;
+}
+
+.info{
+	display: flex;
+	justify-content: center;
+}
+.info table{
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.info table tbody{
+	max-width: 100%;
+}
+.info table tbody tr{
+	max-width: 100%;
+}
+
+.info table tbody tr td{
+	max-width: 100%;
+	padding: 10px;
+	font-size: 1.1em;
+	border: 2px solid grey;
+	font-family: 'Poppins', sans-serif;
+	height: 48px;
+	white-space: nowrap;  
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.label{
+	font-weight: 700;
+	max-width: 30%;
+}
+
+.value{
+	max-width: 70%;
+}
+
+.update{
+	background: #26bd39;
+}
+
+.delete{
+	background: #ff0101ba;
+}
+.delete, .update{
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
