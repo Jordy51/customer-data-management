@@ -29,26 +29,25 @@ const deleteCustomer = async (Customer, email) => {
 
 // /customer/
 router.get("/", async (req, res) => {
-	let customers = await ToyStoreCustomer.find({});
-	// if (req.body.store === "ToyStore") {
-	// 	customers = await ToyStoreCustomer.find({});
-	// } else if (req.body.store === "ElectronicsStore") {
-	// 	customers = await ElectronicsStoreCustomer.find({});
-	// }
-	res.render("customersView", { customers: customers });
+	let toyCustomers = await ToyStoreCustomer.find({});
+	let electronicCustomers = await ElectronicsStoreCustomer.find({});
+	res.render("customersView", { toyCustomers, electronicCustomers });
 });
 
 // /customer/details
-router.get("/details/:type/:id", (req, res) => {
-	console.log(req.params);
+router.get("/details/:id", async (req, res) => {
+	let customer;
+	customer = await ToyStoreCustomer.findById({ _id: req.params.id });
+	if (!customer) {
+		customer = await ElectronicsStoreCustomer.findById({ _id: req.params.id });
+	}
 
-	res.render("customerDetails");
+	customers = customer["_doc"];
+	delete customers._id;
+	delete customers.__v;
+
+	res.render("customerDetails", { customer: customer["_doc"] });
 });
-
-// router.get("/electronicsStore", async (req, res) => {
-// 	const customers = await ElectronicsStoreCustomer.find({});
-// 	res.send("Electronics Store Customer View Page", { customers: customers });
-// });
 
 // /customer/createCustomer *** ***
 router.get("/createCustomer", async (req, res) => {
@@ -57,8 +56,7 @@ router.get("/createCustomer", async (req, res) => {
 	res.render("createCustomer", { toyFields: toyFields, electronicsFields: electronicsFields });
 });
 
-router.post("/createCustomer", async (req, res) => {
-	console.log(req.body);
+router.post("/createCustomer", (req, res) => {
 	const { store } = req.body;
 	let newCustomer;
 	if (store === "ToyStore") {

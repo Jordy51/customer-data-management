@@ -29,8 +29,8 @@ const createFields = async (Field, body) => {
 	}
 };
 
-const deleteField = async (Field) => {
-	return await Field.findOneAndDelete({});
+const deleteField = async (Field, fieldName) => {
+	return await Field.findOneAndDelete({ "fieldName": fieldName });
 };
 
 // /fields/createFields
@@ -40,31 +40,29 @@ router.get("/createFields", async (req, res) => {
 	res.render("createFields", { toyFields: toyFields, electronicsFields: electronicsFields });
 });
 
-router.post("/createFields", (req, res) => {
+router.post("/createFields", async (req, res) => {
 	if (req.body.store === "ToyStore") {
-		createFields(ToyStoreCustomField, req.body);
+		await createFields(ToyStoreCustomField, req.body);
 	} else if (req.body.store === "ElectronicsStore") {
-		createFields(ElectronicsStoreCustomField, req.body);
+		await createFields(ElectronicsStoreCustomField, req.body);
 	}
-	res.redirect("createFields");
+	res.redirect("/fields/createFields");
 });
 
 // /fields/updateFields
 router.get("/updateFields", (req, res) => {
-	res.redirect("createFields");
+	res.redirect("/fields/createFields");
 });
 
 // /fields/deleteFields
-router.delete("/deleteField", (req, res) => {
+router.get("/deleteField/:storeType/:fieldName", async (req, res) => {
 	let deletedField;
-
-	if (res.body.store == "ToyStore") {
-		deletedField = deleteField(ToyStoreCustomField, req.body);
-	} else if (req.body.store === "ElectronicsStore") {
-		deletedField = deleteField(ElectronicsStoreCustomField, req.body);
+	if (req.params.storeType == "toys") {
+		deletedField = await deleteField(ToyStoreCustomField, req.params.fieldName);
+	} else if (req.params.storeType == "electronics") {
+		deletedField = await deleteField(ElectronicsStoreCustomField, req.params.fieldName);
 	}
-	console.log("Deleted!", deletedField);
-	res.redirect("createFields");
+	res.redirect("/fields/createFields");
 });
 
 module.exports = router;

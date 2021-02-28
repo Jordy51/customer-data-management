@@ -7,24 +7,49 @@
 	<body>
 		<div class="container">
 			<div class="container">
-				<div class="heading">User Details (Toys)</div>
-				<% customers.forEach((customer) => { %>
-				<a href="/customer/details/STORE/<%= customer._id %>">
-					<div class="card">
-						<div class="user-name"><%= customer.name %></div>
-						<div class="email"><%= customer.email %></div>
-						<div class="other-details">
-							<div class="dob"><%= customer.dob %></div>
-							<div class="phoneNumber"><%= customer.phoneNumber %></div>
-							<div class="address"><%= customer.address %></div>
+				<div class="heading">User Details</div>
+
+				<div class="selector" id="selector">
+					<select class="store-name" name="store" id="store">
+						<option value="ToyStore">Toy Store</option>
+						<option value="ElectronicsStore">Electronics Store</option>
+					</select>
+				</div>
+
+				<div id="toys-customer">
+					<% toyCustomers.forEach((customer) => { %>
+					<a href="/customers/details/<%= customer._id %>">
+						<div class="card">
+							<div class="user-name"><%= customer.name %></div>
+							<div class="email"><%= customer.email %></div>
+							<div class="other-details">
+								<div class="dob"><%= customer.dob %></div>
+								<div class="phoneNumber"><%= customer.phoneNumber %></div>
+								<div class="address"><%= customer.address %></div>
+							</div>
 						</div>
-					</div>
-				</a>
-				<% }) %>
+					</a>
+					<% }) %>
+				</div>
+				<div id="electronic-customer">
+					<% electronicCustomers.forEach((customer) => { %>
+					<a href="/customers/details/<%= customer._id %>">
+						<div class="card">
+							<div class="user-name"><%= customer.name %></div>
+							<div class="email"><%= customer.email %></div>
+							<div class="other-details">
+								<div class="dob"><%= customer.dob %></div>
+								<div class="phoneNumber"><%= customer.phoneNumber %></div>
+								<div class="address"><%= customer.address %></div>
+							</div>
+						</div>
+					</a>
+					<% }) %>
+				</div>
 			</div>
 		</div>
 
-		<a href="/customers/createCustomer"><button class="create-customer-btn"> CreateNewCustomer</button></a>
+		<a href="/customers/createCustomer"><button class="create-customer-btn">CreateNewCustomer</button></a>
 		<!-- <div class="card">
       <div class="delete-btn">X</div>
 	    <div class="user-name">
@@ -45,5 +70,6 @@
 	      </div>
 	    </div>
 	  </div> -->
+		<script src="/scripts/customerView.js"></script>
 	</body>
 </html>

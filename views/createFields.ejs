@@ -10,10 +10,10 @@
 			<div class="heading">Create Custom Fields</div>
 			<label class="sub-head">Choose a Store</label>
 			<div class="selector" id="selector">
-				<select class="store-name" name="store" id="store">
+				<!-- <select class="store-name" name="store" id="store">
 					<option value="ToyStore">Toy Store</option>
 					<option value="ElectronicsStore">Electronics Store</option>
-				</select>
+				</select> -->
 			</div>
 			<div id="toy-fields">
 				<% toyFields.forEach((field) => { %>
@@ -22,7 +22,7 @@
 					<span> <%= field.fieldType %> </span>
 					<div class="btn-group">
 						<button class="update-btn">Update</button>
-						<button class="delete-btn">Delete</button>
+						<a href="/fields/deleteField/toys/<%= field.fieldName %>"><button class="delete-btn">Delete</button></a>
 					</div>
 				</div>
 				<% }) %>
@@ -34,12 +34,19 @@
 					<span> <%= field.fieldType %> </span>
 					<div class="btn-group">
 						<button class="update-btn">Update</button>
-						<button class="delete-btn">Delete</button>
+						<a href="/fields/deleteField/electronics/<%= field.fieldName %>"><button class="delete-btn">Delete</button></a>
 					</div>
 				</div>
 				<% }) %>
 			</div>
 			<form action="/fields/createFields" method="POST">
+				<div class="selector">
+					<select class="store-name" name="store" id="store">
+						<option value="ToyStore">Toy Store</option>
+						<option value="ElectronicsStore">Electronics Store</option>
+					</select>
+				</div>
+
 				<div class="add-btn-cont"><label class="sub-head">Add Custom Fields &nbsp;&nbsp;</label><button class="add-btn">+</button></div>
 
 				<div id="custom-fields-add"></div>
