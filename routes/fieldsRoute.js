@@ -9,7 +9,7 @@ const createFields = async (Field, body) => {
 	const values = Object.values(body);
 	const x = values.length / 2;
 
-	if ((await Field.countDocuments({})) + (defaultFields.length - 1) === 20) {
+	if ((await Field.countDocuments({})) + (defaultFields.length - 1) >= 20) {
 		res.send("No more fields allowed!");
 	}
 
