@@ -79,3 +79,21 @@ body{
 	color: white;
 	cursor: pointer;
 }
+
+
+.delete-customer-btn {
+	padding: 8px 12px;
+	border-radius: 4px;
+	border: 3px grey solid;
+	position: fixed;
+	z-index: 100;
+	right: 80px;
+	bottom: 40px;
+	background-color: red;
+	color: white;
+	font-size: large;
+}
+.delete-customer-btn:hover{
+  cursor: pointer;
+  background-color: black;
+}
