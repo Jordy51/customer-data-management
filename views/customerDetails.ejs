@@ -19,7 +19,10 @@
 					</tbody>
 				</table>
 			</div>
-			<a href="/customers/deleteCustomer/<%= customerId %>"><button class="delete-customer-btn">Delete</button></a>
+			<div class="btn-group">
+				<a href="/customers/updateCustomer/<%= customerId %>"><button class="customer-btn-group" id="update-btn">AddInfo</button></a>
+				<a href="/customers/deleteCustomer/<%= customerId %>"><button class="customer-btn-group" id="delete-btn">Delete</button></a>
+			</div>
 		</div>
 	</body>
 </html>

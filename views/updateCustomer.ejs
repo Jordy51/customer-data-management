@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Update Customer</title>
+		<link rel="stylesheet" type="text/css" href="/css/createCusotmer.css" />
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<div class="container">
+			<form action="/customers/updateCustomer/<%= id %>" method="POST">
+				<div class="heading">Update Customer</div>
+				<div class="custom-fields" id="toys">
+					<div class="toys-fields">
+						<div class="sub-head">Fields</div>
+						<% fields.forEach((field) => { %>
+						<input type="<%= field.fieldType %>" value='<%= customer[field.fieldName] %>' autocomplete="on" name="<%= field.fieldName %>" class="inp" placeholder="<%= field.fieldName %>" />
+						<% }) %>
+					</div>
+				</div>
+				<input class="btn" type="Submit" value="Submit" />
+			</form>
+		</div>
+		<script type="text/javascript" src="/scripts/createCusotmer.js"></script>
+	</body>
+</html>

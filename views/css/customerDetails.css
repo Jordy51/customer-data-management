@@ -1,99 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
 
-*{
-  box-sizing : border-box;
+* {
+	box-sizing: border-box;
 }
-body,html{
-  margin: 0;
-  padding: 0;
+body,
+html {
+	margin: 0;
+	padding: 0;
 }
-body{
-  height: 100vh;
-}
-
-.container{
-  padding: 50px;
-  padding-top: 10px;
+body {
+	height: 100vh;
 }
 
-
-.heading{
-  color: rgb(20,20,20);
-  font-family: 'RocknRoll One', sans-serif;
-  font-weight: 900;
-  font-size: 2.5em;
-  text-align : center;
-  margin-bottom: 30px;
-  letter-spacing: 4px;
+.container {
+	padding: 50px;
+	padding-top: 10px;
 }
 
-.info{
+.heading {
+	color: rgb(20, 20, 20);
+	font-family: "RocknRoll One", sans-serif;
+	font-weight: 900;
+	font-size: 2.5em;
+	text-align: center;
+	margin-bottom: 30px;
+	letter-spacing: 4px;
+}
+
+.info {
 	display: flex;
 	justify-content: center;
 }
-.info table{
+.info table {
 	width: 100%;
 	max-width: 100%;
 	border-collapse: collapse;
 	table-layout: fixed;
 }
 
-.info table tbody{
+.info table tbody {
 	max-width: 100%;
 }
-.info table tbody tr{
+.info table tbody tr {
 	max-width: 100%;
 }
 
-.info table tbody tr td{
+.info table tbody tr td {
 	max-width: 100%;
 	padding: 10px;
 	font-size: 1.1em;
 	border: 2px solid grey;
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
 	height: 48px;
-	white-space: nowrap;  
+	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-.label{
+.label {
 	font-weight: 700;
 	max-width: 30%;
 }
 
-.value{
+.value {
 	max-width: 70%;
 }
 
-.update{
+.update {
 	background: #26bd39;
 }
 
-.delete{
+.delete {
 	background: #ff0101ba;
 }
-.delete, .update{
+.delete,
+.update {
 	text-align: center;
 	color: white;
 	cursor: pointer;
 }
 
-
-.delete-customer-btn {
+.customer-btn-group {
 	padding: 8px 12px;
 	border-radius: 4px;
 	border: 3px grey solid;
 	position: fixed;
 	z-index: 100;
-	right: 80px;
 	bottom: 40px;
-	background-color: red;
+
 	color: white;
 	font-size: large;
 }
-.delete-customer-btn:hover{
-  cursor: pointer;
-  background-color: black;
+.customer-btn-group:hover {
+	cursor: pointer;
+	background-color: black;
+}
+
+#update-btn {
+	background-color: dodgerblue;
+	right: 180px;
+}
+#delete-btn {
+	background-color: red;
+	right: 80px;
 }

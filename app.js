@@ -13,7 +13,8 @@ const db = process.env.MongoURI;
 
 // Connect MongoDB
 mongoose
-	.connect(db + "MuxElectronicToys", { useNewUrlParser: true, useUnifiedTopology: true })
+	.connect(db + "MuxElectronicToysTEST", { useNewUrlParser: true, useUnifiedTopology: true })
+	// .connect(db + "MuxElectronicToys", { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => console.log("MongoDB Connected!"))
 	.catch((err) => console.log(err));
 

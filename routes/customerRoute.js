@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const bodyParser = require("body-parser");
 const { ToyStoreCustomer, ElectronicsStoreCustomer } = require("../models/Customer");
 const { ToyStoreCustomField, ElectronicsStoreCustomField } = require("../models/CustomField");
 
@@ -67,6 +68,28 @@ router.post("/createCustomer", (req, res) => {
 	}
 	if (!newCustomer) {
 		res.send("Email Already Exists!");
+	}
+	res.redirect("/customers/");
+});
+
+router.get("/updateCustomer/:id", async (req, res) => {
+	let customer = await ToyStoreCustomer.findById({ _id: req.params.id });
+	let fields = await ToyStoreCustomField.find({});
+	if (!customer) {
+		customer = await ElectronicsStoreCustomer.findById({ _id: req.params.id });
+		fields = await ElectronicsStoreCustomField.find({});
+	}
+	res.render("updateCustomer", { customer, fields, id: req.params.id });
+});
+
+router.post("/updateCustomer/:id", async (req, res) => {
+	let body = req.body;
+	Object.keys(body).forEach((key) => {
+		if (body[key] == "") delete body[key];
+	});	
+	const customer = await ToyStoreCustomer.findByIdAndUpdate({ _id: req.params.id }, body);
+	if (!customer) {
+		await ElectronicsStoreCustomer.findByIdAndUpdate({ _id: req.params.id }, body);
 	}
 	res.redirect("/customers/");
 });
