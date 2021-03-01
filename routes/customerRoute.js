@@ -23,8 +23,8 @@ const createCustomer = async (Customer, body) => {
 	}
 };
 
-const deleteCustomer = async (Customer, email) => {
-	await Customer.findOneAndDelete({ email: email });
+const deleteCustomer = async (Customer, id) => {
+	return;
 };
 
 // /customer/
@@ -43,10 +43,11 @@ router.get("/details/:id", async (req, res) => {
 	}
 
 	customers = customer["_doc"];
+	id = customers._id;
 	delete customers._id;
 	delete customers.__v;
 
-	res.render("customerDetails", { customer: customer["_doc"] });
+	res.render("customerDetails", { customer: customer["_doc"], customerId: id });
 });
 
 // /customer/createCustomer *** ***
@@ -67,17 +68,16 @@ router.post("/createCustomer", (req, res) => {
 	if (!newCustomer) {
 		res.send("Email Already Exists!");
 	}
-	res.render("customersView");
+	res.redirect("/customers/");
 });
 
-// /customer/deleteCustomer
-router.post("/deleteCustomer", async (req, res) => {
-	if (req.body.store === "ToyStore") {
-		deleteCustomer(ToyStoreCustomer, req.body.email);
-	} else if (req.body.store === "ElectronicsStore") {
-		deleteCustomer(ElectronicsStoreCustomer, req.body.email);
+// /customers/deleteCustomer
+router.get("/deleteCustomer/:id", async (req, res) => {
+	let deletedCustomer = await ToyStoreCustomer.findByIdAndDelete({ _id: id });
+	if (!deletedCustomer) {
+		deletedCustomer = await ElectronicsStoreCustomer.findByIdAndDelete({ _id: id });
 	}
-	res.render("customersView");
+	res.redirect("/customers/");
 });
 
 module.exports = router;
